@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2023/05/09 16:14:28 by rphuyal          ###   ########.fr        #
+#    Created: 2023/05/13 19:37:52 by rphuyal           #+#    #+#              #
+#    Updated: 2023/05/14 13:40:58 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,22 +24,23 @@ UNAME   := $(shell uname) # get the OS name
 
 CFLAGS  = -Wall -Werror -Wextra -O3 -g -I$(INC) -I${INCFT} -Iinclude
 
-LFLAGS  = -L$(LIBMLX) -L${LIBFT} -lft
+ifeq ($(UNAME), Darwin) # macOS
+    CC = gcc
+	LFLAGS += -L./minilibx -lmlx -framework OpenGL -framework AppKit
+else #Linux and others...
+    CC = gcc
+	LFLAGS += -L./minilibx -lmlx -lbsd -lXext -lX11 -lm
+endif
 
-SRC     = $(wildcard src/*.c) # list of source files
+SRC     = src/main.c # list of source files
 
-OBJDIR  = ./obj
-OBJ     = $(SRC:.c=.o) # convert source files to binary list
+OBJ     = $(SRC:%.c=%.o) # convert source files to binary list
 
-# ifeq ($(UNAME), Darwin) # iMac / iOS
-# 	CC = gcc
-# 	LFLAGS += -framework OpenGL -framework AppKit
-# else ifeq ($(UNAME), FreeBSD) # FreeBSD
-# 	CC = clang
-# else #Linux and others...
-# 	CC = gcc
-# 	LFLAGS += -lbsd -lXext -lX11 -lm
-# endif
+%.o: %.c
+	$(CC) $(CFLAGS) $< -o $@  # convert source files to binary list
+
+# $(OBJDIR)/%.o: %.c
+#     $(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
@@ -57,10 +58,10 @@ fclean: clean
 re: fclean all
 
 show:
-	@printf "UNAME		: $(UNAME)\n"
-	@printf "NAME  		: $(NAME)\n"
-	@printf "CC			: $(CC)\n"
-	@printf "CFLAGS		: $(CFLAGS)\n"
-	@printf "LFLAGS		: $(LFLAGS)\n"
-	@printf "SRC		: $(SRC)\n"
-	@printf "OBJ		: $(OBJ)\n"
+    @printf "UNAME		: $(UNAME)\n"
+    @printf "NAME  		: $(NAME)\n"
+    @printf "CC			: $(CC)\n"
+    @printf "CFLAGS		: $(CFLAGS)\n"
+    @printf "LFLAGS		: $(LFLAGS)\n"
+    @printf "SRC		: $(SRC)\n"
+    @printf "OBJ		: $(OBJ)\n"

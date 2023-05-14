@@ -6,11 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:53:11 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/09 16:18:02 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/14 13:19:13 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../miniLibX/mlx.h"
+#include "../includes/fractol.h"
 
 int	main(void)
 {
