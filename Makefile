@@ -3,65 +3,75 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
+#    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/13 19:37:52 by rphuyal           #+#    #+#              #
-#    Updated: 2023/05/14 13:40:58 by rphuyal          ###   ########.fr        #
+#    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
+#    Updated: 2023/05/11 23:35:02 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = fractol
+NAME	=	fractol
+CC		=	@gcc
+FLAGS	=	-Wall -Wextra -Werror -fsanitize=address 
+LFT		=	libft/libft.a
+MLX 	=	mlx/libmlx.a
+LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
+INC		=	-I ./libft -I ./mlx
+SRC		=	$(wildcard src/*.c)
+OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g
+#COLORS
+RED =		\033[0;31m
+GREEN =		\033[0;32m
+YELLOW =	\033[0;33m
+RESET =		\033[0m
 
-INC     = /usr/local/include
 
-LIBFT   = ./libft
-LIBMLX  = ./miniLibX
+all:		$(MLX) $(LFT) obj $(NAME)
 
-UNAME   := $(shell uname) # get the OS name
+$(NAME):	$(OBJ)
+			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling $(NAME)..."
+			$(CC) $(FLAGS) -o $@ $^ $(LIB)
+			@echo "[" "$(GREEN)OK$(RESET)" "] | $(NAME) ready!"
 
-CFLAGS  = -Wall -Werror -Wextra -O3 -g -I$(INC) -I${INCFT} -Iinclude
+$(MLX):
+			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling minilibx..."
+			@make -sC mlx > /dev/null 2>&1
+			@echo "[" "$(GREEN)OK$(RESET)" "] | Minilibx ready!"
 
-ifeq ($(UNAME), Darwin) # macOS
-    CC = gcc
-	LFLAGS += -L./minilibx -lmlx -framework OpenGL -framework AppKit
-else #Linux and others...
-    CC = gcc
-	LFLAGS += -L./minilibx -lmlx -lbsd -lXext -lX11 -lm
-endif
+$(LFT):		
+			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling libft..."
+			@make -sC libft
+			@echo "[" "$(GREEN)OK$(RESET)" "] | Libft ready!"
 
-SRC     = src/main.c # list of source files
+obj:
+			@mkdir -p obj
 
-OBJ     = $(SRC:%.c=%.o) # convert source files to binary list
-
-%.o: %.c
-	$(CC) $(CFLAGS) $< -o $@  # convert source files to binary list
-
-# $(OBJDIR)/%.o: %.c
-#     $(CC) $(CFLAGS) -c $< -o $@
-
-all: $(NAME)
-
-$(NAME): createlibft $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
-
-createlibft:
-	make -C libft --no-print-directory
+obj/%.o: 	src/%.c
+			@mkdir -p $(dir $@)
+			$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
-fclean: clean
-	rm -f $(NAME)
+			@make -sC libft clean
+			@make -sC mlx clean > /dev/null
+			@rm -rf $(OBJ) obj
+			@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
 
-re: fclean all
+fclean:		clean
+			@make -sC libft fclean
+			@rm -rf $(NAME)
+			@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."
 
-show:
-    @printf "UNAME		: $(UNAME)\n"
-    @printf "NAME  		: $(NAME)\n"
-    @printf "CC			: $(CC)\n"
-    @printf "CFLAGS		: $(CFLAGS)\n"
-    @printf "LFLAGS		: $(LFLAGS)\n"
-    @printf "SRC		: $(SRC)\n"
-    @printf "OBJ		: $(OBJ)\n"
+re:			fclean norm all
+
+norm:
+	@echo "[" "$(YELLOW)..$(RESET)" "] | Running Norminette...$(RESET)"
+	@if norminette src include | grep -q "Error!"; then \
+		echo "[" "$(RED)!!$(RESET)" "] | Norminette found errors.$(RESET)"; \
+		norminette src include | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
+	else \
+		echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
+	fi
+
+
+.PHONY:		all clean fclean re

@@ -12,17 +12,40 @@
 
 #include "../includes/fractol.h"
 
-int	main(void)
+t_win new_program(int w, int h, char *str)
 {
 	void	*mlx_ptr;
-	void	*win_ptr;
 
 	mlx_ptr = mlx_init();
-	if (!mlx_ptr)
+	return ((t_win) {mlx_ptr, mlx_new_window(mlx_ptr, w, h, str), w, h});
+}
+
+t_img	new_img(int w, int h, t_win window)
+{
+	t_img	image;
+
+	image.win = window;
+	image.img_ptr = mlx_new_image(window.mlx_ptr, w, h);
+	image.addr = mlx_get_data_addr(image.img_ptr, &(image.bpp),
+			&(image.line_len), &(image.endian));
+	image.w = w;
+	image.h = h;
+	return (image);
+}
+
+int	main(void)
+{
+	t_win tutorial;
+	
+	tutorial = new_program(WIDTH, HEIGHT, "New Program");
+	if (!tutorial.mlx_ptr || !tutorial.win_ptr)
 		return (1);
-	win_ptr = mlx_new_window (mlx_ptr, 300, 300, "Hello World");
-	if (!win_ptr)
-		return (2);
-	mlx_loop(mlx_ptr);
+
+	t_img	image;
+
+	image = new_img(WIDTH, HEIGHT, tutorial);
+	mlx_destroy_image(tutorial.mlx_ptr, image.img_ptr);
+
+	mlx_loop(tutorial.mlx_ptr);
 	return (0);
 }
