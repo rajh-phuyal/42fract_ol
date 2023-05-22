@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   iter.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 15:53:11 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/22 19:27:49 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/05/22 19:26:44 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/05/22 19:40:08 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../includes/fractol.h"
 
-void	initialization(char *str)
+int	iter_equation(int z, int c)
 {
-	ft_printf("%s\n", str);
-}
+	int	start;
+	int	iterations;
 
-int	main(int argc, char **argv)
-{
-	if (argc == 2)
+	start = 0;
+	iterations = 100;
+	while (start < iterations)
 	{
-		if (ft_valid_args(argv))
-		{
-			ft_printf("%i Valid argument\n", argc);
-			initialization(argv[1]);
-			return (0);
-		}
-		else
-			return (ft_printf("Error: Invalid argument\n"));
+		z = (z * z) + c;
+		if (z * z > 4)
+			break ;
+		start++;
 	}
-	else
-		return (ft_error("Invalid arguments", "PASS: ./fractol [name]"));
+	return (0);
 }
