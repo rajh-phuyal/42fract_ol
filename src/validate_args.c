@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   validate_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/22 16:17:35 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/05/22 15:25:35 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/05/22 15:39:46 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
-
-# include "../mlx/mlx.h"
-# include "../libft/libft.h"
-
-# include <math.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
+#include "../includes/fractol.h"
 
 
-// input validation
-int	ft_valid_args(char **argv);
-void initialization(char *str);
-int	ft_error(char *heading, char *message);
-
-#endif
+int	ft_valid_args(char **argv)
+{
+    if (!ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])))
+        return (1);
+    else if (!ft_strncmp(argv[1], "julia", ft_strlen(argv[1])))
+        return (1);
+    else if (!ft_strncmp(argv[1], "tree", ft_strlen(argv[1])))
+        return (1);
+    else
+        return (0);
+}
