@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:16:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/22 16:23:22 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/22 22:03:42 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,22 +101,3 @@ int	ft_error(char *heading, char *message)
 	free(calculated);
 	return (1);
 }
-
-// printf(CYAN "╟───────────────────────────────────────────────────╢"
-// 		RESET "\n");
-// 	printf(CYAN "║" YELLOW ");
-// 	print_line(iter, heading);
-// 	printf("║" RESET "\n");
-// 	printf("\n\n");
-// 	printf(CYAN "╔═══════════════════════════════════════════════════╗"
-// 		RESET "\n");
-// 	printf(CYAN "║                     " RED "ERROR!		            "
-// 		CYAN "║" RESET "\n");
-// 	printf(CYAN "╟───────────────────────────────────────────────────╢"
-// 		RESET "\n");
-// 	printf(CYAN "║" YELLOW "    	      Oops! Something went wrong!	"
-// 		CYAN "    ║" RESET "\n");
-// 	printf(CYAN "║" YELLOW " Please select a proper map name from "
-// 		GREEN "/maps " YELLOW "folder" CYAN " ║" RESET "\n");
-// 	printf(CYAN "╚═══════════════════════════════════════════════════╝"
-// 		RESET "\n");
