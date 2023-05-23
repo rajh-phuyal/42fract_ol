@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:16:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/22 22:03:42 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/23 20:30:26 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define BOLD "\033[1m"
 #define GREEN "\033[0;32m"
 #define RED "\033[0;31m"
-#define RESET "\033[0m"
+#define RESET_C "\033[0m"
 #define YELLOW  "\x1b[33m"
 #define CYAN    "\x1b[36m"
 #define UNDERLINE    "\x1b[4m"
@@ -72,7 +72,7 @@ void	print_message(char *message, int *calculated)
 	iter = ft_strlen(message);
 	while (*message && iter--)
 		printf("%c", *message++);
-	printf(CYAN "║" RESET "\n");
+	printf(CYAN "║" RESET_C "\n");
 }
 
 int	ft_error(char *heading, char *message)
@@ -88,15 +88,15 @@ int	ft_error(char *heading, char *message)
 	while (iter--)
 		printf("═");
 	iter = 51;
-	printf("╗" RESET "\n");
+	printf("╗" RESET_C "\n");
 	printf(CYAN "║");
 	print_line(calculated[2] / 2, ' ');
-	printf(RED "%s" RESET, heading);
+	printf(RED "%s" RESET_C, heading);
 	print_line(calculated[2] / 2, ' ');
-	printf(CYAN "║" RESET "\n");
+	printf(CYAN "║" RESET_C "\n");
 	printf(CYAN "╟");
 	print_line(52, '-');
-	printf("╢" RESET "\n");
+	printf("╢" RESET_C "\n");
 	print_message(message, calculated);
 	free(calculated);
 	return (1);

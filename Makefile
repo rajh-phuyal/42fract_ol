@@ -6,19 +6,21 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/14 19:02:23 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/05/23 21:32:36 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fractol
 CC		=	@gcc
-FLAGS	=	-Wall -Wextra -Werror -fsanitize=address
+FLAGS	=	-fsanitize=address 
 LFT		=	libft/libft.a
 MLX 	=	mlx/libmlx.a
-LIB_	=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
-LIB		= gcc -Wall -Wextra -Werror -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
 INC		=	-I ./libft -I ./mlx
-SRC		=	$(wildcard src/*.c)
+SRC		=	src/core/main.c \
+			src/core/initializations.c \
+			src/window_helpers/hooks.c
+			
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
 #COLORS
@@ -40,7 +42,7 @@ $(MLX):
 			@make -sC mlx > /dev/null 2>&1
 			@echo "[" "$(GREEN)OK$(RESET)" "] | Minilibx ready!"
 
-$(LFT):
+$(LFT):		
 			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling libft..."
 			@make -sC libft
 			@echo "[" "$(GREEN)OK$(RESET)" "] | Libft ready!"
@@ -63,16 +65,13 @@ fclean:		clean
 			@rm -rf $(NAME)
 			@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."
 
-re:			fclean norm all
-
 norm:
-	@echo "[" "$(YELLOW)..$(RESET)" "] | Running Norminette...$(RESET)"
-	@if norminette src include | grep -q "Error!"; then \
-		echo "[" "$(RED)!!$(RESET)" "] | Norminette found errors.$(RESET)"; \
-		norminette src include | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
-	else \
-		echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
-	fi
+			@echo "[" "$(YELLOW)..$(RESET)" "] | Running Norminette...$(RESET)"
+			@if norminette src include | grep -q "Error!"; then \
+				echo "[" "$(RED)!!$(RESET)" "] | Norminette found errors.$(RESET)"; \
+				norminette src include | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
+			else \
+				echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
+			fi
 
-
-.PHONY:		all clean fclean re
+re:			fclean norm all
