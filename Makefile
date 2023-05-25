@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/23 21:32:36 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/05/25 20:15:52 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
 INC		=	-I ./libft -I ./mlx
 SRC		=	src/core/main.c \
 			src/core/initializations.c \
-			src/window_helpers/hooks.c
+			src/window_helpers/hooks.c \
+			src/window_helpers/painter.c \
+			src/window_helpers/colors.c \
 			
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 

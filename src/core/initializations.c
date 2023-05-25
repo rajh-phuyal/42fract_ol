@@ -6,11 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:31:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/23 21:36:12 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/25 19:56:35 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../inc/fractol.h"
 
 t_cnum	*get_cnum(void)
 {

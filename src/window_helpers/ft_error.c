@@ -6,11 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:16:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/23 20:30:26 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/25 19:56:52 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../inc/fractol.h"
 
 #define BOLD "\033[1m"
 #define GREEN "\033[0;32m"

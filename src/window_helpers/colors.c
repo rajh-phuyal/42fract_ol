@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.c                                             :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 19:26:44 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/25 19:56:45 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/05/25 20:11:24 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/05/25 20:11:43 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-int	iter_equation(int z, int c)
+int	gen_trgb(int opacity, int red, int green, int blue)
 {
-	int	start;
-	int	iterations;
+	if (opacity > 255 || red > 255 || green > 255 || blue > 255)
+		return (0);
+	return (opacity << 24 | red << 16 | green << 8 | blue);
+}
 
-	start = 0;
-	iterations = 100;
-	while (start < iterations)
-	{
-		z = (z * z) + c;
-		if (z * z > 4)
-			break ;
-		start++;
-	}
-	return (0);
+int	get_opacity(int trgb)
+{
+	return ((trgb >> 24) & 0XFF);
+}
+
+int	get_r(int trgb)
+{
+	return ((trgb >> 16) & 0XFF);
+}
+
+int	get_g(int trgb)
+{
+	return ((trgb >> 8) & 0XFF);
+}
+
+int	get_b(int trgb)
+{
+	return (trgb & 0xFF);
 }

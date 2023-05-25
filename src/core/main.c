@@ -6,11 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:53:11 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/23 21:35:49 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/25 20:05:02 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "../../inc/fractol.h"
 
 int	ft_valid_args(char **argv)
 {
@@ -38,6 +38,7 @@ int	main(int argc, char **argv)
 		mlx_hook(fractal.win->win, 17, 0, exit_fractal, &fractal);
 		mlx_key_hook (fractal.win->win, key_hooks, &fractal);
 		mlx_mouse_hook(fractal.win->win, mouse_hooks, &fractal);
+		put_background(&fractal);
 		mlx_loop(fractal.win->mlx);
 	}
 	else

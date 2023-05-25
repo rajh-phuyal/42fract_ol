@@ -6,11 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/23 21:34:37 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/25 19:56:57 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fractol.h"
+#include "../../inc/fractol.h"
 
 int	exit_fractal(t_fractal *fractal)
 {
