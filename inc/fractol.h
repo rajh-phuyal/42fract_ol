@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/25 20:19:51 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/26 21:00:24 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,26 +45,24 @@ typedef struct s_plane
 	double	i;
 }	t_plane;
 
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 // helper lists
 typedef struct s_window
 {
     void	*mlx;
     void	*win;
+	t_data	img;
     int		width;
     int		height;
 }	t_window;
-
-typedef struct s_img
-{
-	t_win	win;
-	void	*img_ptr;
-	char	*addr;
-	int		h;
-	int		w;
-	int		bpp;
-	int		endian;
-	int		line_len;
-}		t_img;
 
 typedef struct s_fractal
 {

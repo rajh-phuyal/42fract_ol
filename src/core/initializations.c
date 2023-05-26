@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:31:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/25 19:56:35 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/26 20:56:12 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ t_window	*get_window(char *name)
 		return (NULL);
 	window->mlx = mlx_init();
 	window->win = mlx_new_window(window->mlx, WIDTH, HEIGHT, name);
+	window->img.img = mlx_new_image(window->mlx, WIDTH, HEIGHT);
+	window->img.addr = mlx_get_data_addr(window->img.img, &window->img.bits_per_pixel, &window->img.line_length,
+								&window->img.endian);
 	free(name);
 	if (window->mlx == NULL || window->win == NULL)
 	{
@@ -56,6 +59,7 @@ t_window	*get_window(char *name)
 	return (window);
 }
 
+t_data	get_img;
 bool	initialization(t_fractal *fractal)
 {
 	fractal->win = get_window(ft_strjoin("Fractal : ", fractal->name));
