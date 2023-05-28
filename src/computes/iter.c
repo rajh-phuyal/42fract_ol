@@ -12,6 +12,51 @@
 
 #include "../../inc/fractol.h"
 
+static int is_unstable_my(t_cnum inum, t_cnum z_num, int iter)
+{
+	t_cnum temp;
+	int i;
+
+	i = 0;
+	temp = inum;
+	while (i++ < iter)
+	{
+		double temp_a = temp.a;
+		double temp_b = temp.b;
+		temp.a = temp_a * temp_a - temp_b * temp_b + z_num.a;
+		temp.b = 2 * temp_a * temp_b + z_num.b;
+		if (temp.a * temp.a + temp.b * temp.b > 4)
+			return i;
+	}
+	return 0;
+}
+
+void create_mandelbrot_my(t_fractal *fractal)
+{
+	int x;
+	int y;
+	int red;
+	double st;
+
+	x = 0;
+	while (x < fractal->win->width)
+	{
+		y = 0;
+		while (y < fractal->win->height)
+		{
+			t_cnum inum = { fractal->plane->x + x * fractal->plane->i, fractal->plane->x + y * fractal->plane->i };
+			st = (double)is_unstable(inum, *fractal->num, fractal->iters);
+			if (st > 0)
+			{
+				red = 255 * (st / fractal->iters);
+				put_pixel_img(fractal->win->img, x, y, gen_trgb(0, red, 40, 40));
+			}
+			y++;
+		}
+		x++;
+	}
+}
+
 int	iter_equation(int z, int c)
 {
 	int	start;
