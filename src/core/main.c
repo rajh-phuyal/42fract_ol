@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:53:11 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/26 20:52:55 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/28 20:32:09 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ int	main(int argc, char **argv)
 		mlx_key_hook (fractal.win->win, key_hooks, &fractal);
 		mlx_mouse_hook(fractal.win->win, mouse_hooks, &fractal);
 		put_background(&fractal);
+		retrive_cache(&fractal);
+		create_mandelbrot(&fractal);
 		mlx_loop(fractal.win->mlx);
 	}
 	else
-		return (ft_printf("Invalid arguments!! PASS: ./fractol [name]\n"));
+		return (ft_printf("Invalid arguments!! Use: ./fractol [name]\n"));
 }

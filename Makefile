@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/25 20:15:52 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/05/28 20:31:11 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,14 @@ LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
 INC		=	-I ./libft -I ./mlx
 SRC		=	src/core/main.c \
 			src/core/initializations.c \
-			src/window_helpers/hooks.c \
-			src/window_helpers/painter.c \
-			src/window_helpers/colors.c \
+			src/window/hooks.c \
+			src/window/painter.c \
+			src/window/colors.c \
+			src/cache/hash_id.c \
+			src/cache/crud.c \
+			src/computes/helper.c \
+			src/computes/julia.c \
+			src/computes/mandelbrot.c \
 			
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
@@ -67,13 +72,5 @@ fclean:		clean
 			@rm -rf $(NAME)
 			@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."
 
-norm:
-			@echo "[" "$(YELLOW)..$(RESET)" "] | Running Norminette...$(RESET)"
-			@if norminette src include | grep -q "Error!"; then \
-				echo "[" "$(RED)!!$(RESET)" "] | Norminette found errors.$(RESET)"; \
-				norminette src include | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
-			else \
-				echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
-			fi
 
-re:			fclean norm all
+re:			fclean all

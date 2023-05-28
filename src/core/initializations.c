@@ -6,13 +6,13 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:31:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/26 20:56:12 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/28 20:25:23 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-t_cnum	*get_cnum(void)
+t_cnum	*get_cnum()
 {
 	t_cnum	*cnum;
 
@@ -59,14 +59,13 @@ t_window	*get_window(char *name)
 	return (window);
 }
 
-t_data	get_img;
 bool	initialization(t_fractal *fractal)
 {
 	fractal->win = get_window(ft_strjoin("Fractal : ", fractal->name));
 	fractal->plane = get_complex_plane();
-	fractal->num = get_cnum();
-	fractal->iters = 100;
-	if (!fractal->win || !fractal->plane || !fractal->num)
+	fractal->cnum = get_cnum();
+	fractal->iter = 80;
+	if (!fractal->win || !fractal->plane || !fractal->cnum)
 		return (false);
 	return (true);
 }

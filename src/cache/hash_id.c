@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.c                                             :+:      :+:    :+:   */
+/*   hash_id.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 19:26:44 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/25 19:56:45 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/05/28 20:28:51 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/05/28 20:36:22 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-int	iter_equation(int z, int c)
+char    *create_hash_id(int width, int height, char* name)
 {
-	int	start;
-	int	iterations;
+    unsigned long id;
+    int c;
 
-	start = 0;
-	iterations = 100;
-	while (start < iterations)
-	{
-		z = (z * z) + c;
-		if (z * z > 4)
-			break ;
-		start++;
-	}
-	return (0);
+    id = 5381;
+    id = ((id << 3) + id) + width;
+    id = ((id << 3) + id) + height;
+    while (*name)
+        id = ((id << 3) + id) + *name++;
+    return ft_itoa(id % INT_MAX);
 }
