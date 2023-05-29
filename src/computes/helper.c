@@ -6,13 +6,13 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:26:44 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/28 20:37:07 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/29 21:30:23 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-int is_unstable(t_cnum inum, t_cnum z_num, int iter)
+int is_stable(t_cnum inum, t_cnum z_num, int iter)
 {
 	t_cnum temp;
 	int i;

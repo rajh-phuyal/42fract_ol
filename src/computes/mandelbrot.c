@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:54:05 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/28 20:12:40 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/29 23:59:46 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void create_mandelbrot(t_fractal *fractal)
 		while (y < fractal->win->height)
 		{
 			t_cnum inum = {
-				fractal->plane->x + x * fractal->plane->i,
-				fractal->plane->i + y * fractal->plane->i
+				.a = (x - fractal->win->width / 2) * 4.0 / fractal->win->width,
+				.b = (y - fractal->win->height / 2) * 4.0 / fractal->win->height
 			};
-			st = (double)is_unstable(inum, *fractal->cnum, fractal->iter);
+			st = (double)is_stable(inum, *fractal->cnum, fractal->iter);
 			if (st > 0)
 			{
 				red = 255 * (st / fractal->iter);

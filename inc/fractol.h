@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/28 20:36:32 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/29 23:58:54 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,23 @@
 // complex numbers
 typedef struct s_cnum
 {
-    double	a;
-    double	b;
+	double	a;
+	double	b;
 }	t_cnum;
 
 // complex plane
 typedef struct s_plane
 {
-    double	x;
-	double	i;
+	int		x0;
+	int		i0;
+	double	x_pos;
+	double	x_neg;
+	double	i_pos;
+	double	i_neg;
 }	t_plane;
 
 // image data
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -58,11 +62,11 @@ typedef struct	s_data {
 // window data
 typedef struct s_window
 {
-    void	*mlx;
-    void	*win;
+	void	*mlx;
+	void	*win;
+	int		width;
+	int		height;
 	t_data	img;
-    int		width;
-    int		height;
 }	t_window;
 
 // big daddy
@@ -71,11 +75,10 @@ typedef struct s_fractal
 	t_window	*win;
 	t_plane		*plane;
 	t_cnum		*cnum;
-    char		*name;
-    int			iter;
+	char		*name;
+	int			iter;
 	char		*cache;
 }	t_fractal;
-
 
 // fractal's validation
 int		ft_valid_args(char **argv);
@@ -93,12 +96,12 @@ int		mouse_hooks(int button, int mouse_x, int mouse_y, void *param);
 int		exit_fractal(t_fractal *fractal);
 
 // cache functions
-char    *create_hash_id(int width, int height, char* name);
+char	*create_hash_id(int width, int height, char *name);
 int		create_cache(t_fractal *fractal);
 t_data	*retrive_cache(t_fractal *fractal);
 
 // computation functions
 void	create_mandelbrot(t_fractal *fractal);
-int		is_unstable(t_cnum inum, t_cnum z_num, int iter);
+int 	is_stable(t_cnum inum, t_cnum z_num, int iter);
 
 #endif
