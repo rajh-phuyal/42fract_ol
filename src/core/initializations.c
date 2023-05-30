@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:31:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/30 00:05:38 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/30 15:38:36 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_plane	*get_complex_plane(void)
 	plane = malloc(sizeof(t_plane));
 	if (!plane)
 		return (NULL);
-	plane->x_pos = 2.0;
-	plane->x_neg = -2.0;
+	plane->x_pos = 2.0f;
+	plane->x_neg = -2.0f;
 	plane->i_pos = 2.0f;
 	plane->i_neg = -2.0f;
 	plane->x0 = WIDTH / 2;

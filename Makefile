@@ -5,19 +5,21 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/28 20:31:11 by rphuyal          ###   ########.fr        #
+#    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
+#    Updated: 2023/05/30 15:36:56 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	fractol
-CC		=	@gcc
-FLAGS	=	-fsanitize=address 
-LFT		=	libft/libft.a
-MLX 	=	mlx/libmlx.a
-LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
-INC		=	-I ./libft -I ./mlx
-SRC		=	src/core/main.c \
+NAME	= fractol
+OS		= $(shell uname)
+
+# directories
+SRCDIR	= ./src
+INCDIR	= ./includes
+OBJDIR	= ./obj
+
+# src / obj files
+SRC		= 	src/core/main.c \
 			src/core/initializations.c \
 			src/window/hooks.c \
 			src/window/painter.c \
@@ -27,32 +29,33 @@ SRC		=	src/core/main.c \
 			src/computes/helper.c \
 			src/computes/julia.c \
 			src/computes/mandelbrot.c \
-			
-OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
-#COLORS
-RED =		\033[0;31m
-GREEN =		\033[0;32m
-YELLOW =	\033[0;33m
-RESET =		\033[0m
+OBJ		= $(patsubst src/%.c,obj/%.o,$(SRC))
+
+# compiler
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror -g
 
 
-all:		$(MLX) $(LFT) obj $(NAME)
+# mlx library
+ifeq ($(OS), Linux)
+	MLX		= ./miniLibX_X11/
+	MLX_LNK	= -L $(MLX) -l mlx -lXext -lX11
+else
+	MLX		= ./miniLibX/
+	MLX_LNK	= -L $(MLX) -l mlx -framework OpenGL -framework AppKit
+endif
 
-$(NAME):	$(OBJ)
-			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling $(NAME)..."
-			$(CC) $(FLAGS) -o $@ $^ $(LIB)
-			@echo "[" "$(GREEN)OK$(RESET)" "] | $(NAME) ready!"
+MLX_INC	= -I $(MLX)
+MLX_LIB	= $(addprefix $(MLX),mlx.a)
 
-$(MLX):
-			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling minilibx..."
-			@make -sC mlx > /dev/null 2>&1
-			@echo "[" "$(GREEN)OK$(RESET)" "] | Minilibx ready!"
+# ft library
+FT		= ./libft/
+FT_LIB	= $(addprefix $(FT),libft.a)
+FT_INC	= -I ./libft
+FT_LNK	= -L ./libft -l ft -l pthread
 
-$(LFT):		
-			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling libft..."
-			@make -sC libft
-			@echo "[" "$(GREEN)OK$(RESET)" "] | Libft ready!"
+all: obj $(FT_LIB) $(MLX_LIB) $(NAME)
 
 obj:
 			@mkdir -p obj
@@ -61,16 +64,22 @@ obj/%.o: 	src/%.c
 			@mkdir -p $(dir $@)
 			$(CC) $(FLAGS) $(INC) -c $< -o $@
 
+$(FT_LIB):
+	@make -C $(FT) > /dev/null 2>&1
+
+$(MLX_LIB):
+	@make -sC $(MLX) > /dev/null 2>&1
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
+
 clean:
-			@make -sC libft clean
-			@make -sC mlx clean > /dev/null
-			@rm -rf $(OBJ) obj
-			@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
+	rm -rf $(OBJDIR)
+	make -C $(FT) clean
+	make -C $(MLX) clean
 
-fclean:		clean
-			@make -sC libft fclean
-			@rm -rf $(NAME)
-			@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."
+fclean: clean
+	rm -rf $(NAME)
+	make -C $(FT) fclean
 
-
-re:			fclean all
+re: fclean all

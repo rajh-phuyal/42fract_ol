@@ -6,14 +6,14 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/29 23:58:54 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/05/30 15:44:46 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../mlx/mlx.h"
+# include "../miniLibX/mlx.h"
 # include "../libft/libft.h"
 
 // libraries
@@ -22,8 +22,8 @@
 # include <unistd.h>
 
 // window dimensions
-# define WIDTH 1600
-# define HEIGHT 1300
+# define WIDTH 700
+# define HEIGHT 600
 
 // hooks
 # define ESC 65307
