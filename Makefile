@@ -5,21 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/02/22 23:12:10 by pbondoer          #+#    #+#              #
-#    Updated: 2023/05/30 15:36:56 by rphuyal          ###   ########.fr        #
+#    Created: 2023/06/03 21:26:23 by rphuyal           #+#    #+#              #
+#    Updated: 2023/06/03 23:12:02 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fractol
-OS		= $(shell uname)
+NAME  = fractol
 
-# directories
-SRCDIR	= ./src
-INCDIR	= ./includes
-OBJDIR	= ./obj
+OS    = $(shell uname)
 
-# src / obj files
-SRC		= 	src/core/main.c \
+CC    = @gcc
+
+FLAGS = -g -fsanitize=address
+
+LFT   = libft/libft.a
+
+INC   = -I./libft -I./mlx -I./mlx_mac
+
+SRC   = src/core/main.c \
 			src/core/initializations.c \
 			src/window/hooks.c \
 			src/window/painter.c \
@@ -30,56 +33,62 @@ SRC		= 	src/core/main.c \
 			src/computes/julia.c \
 			src/computes/mandelbrot.c \
 
-OBJ		= $(patsubst src/%.c,obj/%.o,$(SRC))
+OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
-# compiler
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g
-
-
-# mlx library
-ifeq ($(OS), Linux)
-	MLX		= ./miniLibX_X11/
-	MLX_LNK	= -L $(MLX) -l mlx -lXext -lX11
+ifeq ($(OS), Darwin)
+    MLX = mlx_mac/libmlx.a
+	INC_MLX = mlx_mac
+    LIB = -L./libft -lft -L./mlx_mac -lmlx -framework OpenGL -framework AppKit
 else
-	MLX		= ./miniLibX/
-	MLX_LNK	= -L $(MLX) -l mlx -framework OpenGL -framework AppKit
+    MLX = mlx/libmlx.a
+	INC_MLX = mlx
+    LIB = -L./libft -lft -L./mlx -lmlx -lXext -lX11
 endif
 
-MLX_INC	= -I $(MLX)
-MLX_LIB	= $(addprefix $(MLX),mlx.a)
+# COLORS
+CBOLD   = \033[0;1m
+RED     = \033[0;41m
+GREEN   = \033[0;42m
+GREEN_T = \033[0;92m
+BLUE   = \033[0;44m
+YELLOW  = \033[0;43m
+RESET   = \033[0m
 
-# ft library
-FT		= ./libft/
-FT_LIB	= $(addprefix $(FT),libft.a)
-FT_INC	= -I ./libft
-FT_LNK	= -L ./libft -l ft -l pthread
-
-all: obj $(FT_LIB) $(MLX_LIB) $(NAME)
-
-obj:
-			@mkdir -p obj
-
-obj/%.o: 	src/%.c
-			@mkdir -p $(dir $@)
-			$(CC) $(FLAGS) $(INC) -c $< -o $@
-
-$(FT_LIB):
-	@make -C $(FT) > /dev/null 2>&1
-
-$(MLX_LIB):
-	@make -sC $(MLX) > /dev/null 2>&1
+all: $(LFT) $(MLX) obj $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
+	@echo "$(CBOLD)$(YELLOW)  Compiling $(NAME) $(RESET)"
+	$(CC) $(FLAGS) -o $@ $^ $(LIB)
+	@echo "$(CBOLD)$(GREEN)   $(NAME) ready! ✔️ $(RESET)"
+
+$(MLX):
+	@echo "$(CBOLD)$(YELLOW) Compiling minilibx $(RESET)"
+	@make -sC $(INC_MLX) > /dev/null 2>&1
+	@echo "$(CBOLD)$(GREEN)  Minilibx ready! ✔️ $(RESET)\n ↪"
+
+$(LFT):
+	@echo "$(CBOLD)$(YELLOW)  Compiling libft   $(RESET)"
+	@make -sC ./libft
+	@echo "$(CBOLD)$(GREEN)    Libft ready!  ✔️ $(RESET)\n ↪"
+
+obj:
+	@mkdir -p obj
+
+obj/%.o: src/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
-	rm -rf $(OBJDIR)
-	make -C $(FT) clean
-	make -C $(MLX) clean
+	@make -sC libft clean
+	@make -sC $(INC_MLX) clean > /dev/null
+	@rm -rf $(OBJ) obj
+	@echo "$(CBOLD)$(RED)  Objects removed!  $(RESET)\n"
 
 fclean: clean
-	rm -rf $(NAME)
-	make -C $(FT) fclean
+	@make -sC libft fclean
+	@rm -rf $(NAME)
+	@echo "$(CBOLD)$(RED)  Binaries removed! $(RESET)\n"
 
 re: fclean all
+
+.PHONY: all

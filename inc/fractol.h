@@ -6,14 +6,14 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/30 15:44:46 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/03 21:35:32 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../miniLibX/mlx.h"
+# include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
 // libraries
