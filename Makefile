@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/03 21:26:23 by rphuyal           #+#    #+#              #
-#    Updated: 2023/06/03 23:12:02 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/06/04 20:52:50 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME  = fractol
 
 OS    = $(shell uname)
 
-CC    = @gcc
+CC    = @gcc -no-pie
 
 FLAGS = -g -fsanitize=address
 
@@ -31,6 +31,7 @@ SRC   = src/core/main.c \
 			src/cache/crud.c \
 			src/computes/helper.c \
 			src/computes/julia.c \
+			src/computes/tree.c \
 			src/computes/mandelbrot.c \
 
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
@@ -49,7 +50,6 @@ endif
 CBOLD   = \033[0;1m
 RED     = \033[0;41m
 GREEN   = \033[0;42m
-GREEN_T = \033[0;92m
 BLUE   = \033[0;44m
 YELLOW  = \033[0;43m
 RESET   = \033[0m
@@ -59,17 +59,17 @@ all: $(LFT) $(MLX) obj $(NAME)
 $(NAME): $(OBJ)
 	@echo "$(CBOLD)$(YELLOW)  Compiling $(NAME) $(RESET)"
 	$(CC) $(FLAGS) -o $@ $^ $(LIB)
-	@echo "$(CBOLD)$(GREEN)   $(NAME) ready! ✔️ $(RESET)"
+	@echo "$(CBOLD)$(GREEN)    $(NAME) ready!  $(RESET)"
 
 $(MLX):
-	@echo "$(CBOLD)$(YELLOW) Compiling minilibx $(RESET)"
+	@echo "$(CBOLD)$(YELLOW) Compiling Minilibx $(RESET)"
 	@make -sC $(INC_MLX) > /dev/null 2>&1
-	@echo "$(CBOLD)$(GREEN)  Minilibx ready! ✔️ $(RESET)\n ↪"
+	@echo "$(CBOLD)$(GREEN)   Minilibx ready!  $(RESET)\n ↪"
 
 $(LFT):
-	@echo "$(CBOLD)$(YELLOW)  Compiling libft   $(RESET)"
+	@echo "$(CBOLD)$(YELLOW)  Compiling Libft   $(RESET)"
 	@make -sC ./libft
-	@echo "$(CBOLD)$(GREEN)    Libft ready!  ✔️ $(RESET)\n ↪"
+	@echo "$(CBOLD)$(GREEN)    Libft ready!    $(RESET)\n ↪"
 
 obj:
 	@mkdir -p obj
@@ -82,12 +82,12 @@ clean:
 	@make -sC libft clean
 	@make -sC $(INC_MLX) clean > /dev/null
 	@rm -rf $(OBJ) obj
-	@echo "$(CBOLD)$(RED)  Objects removed!  $(RESET)\n"
+	@echo "$(CBOLD)$(BLUE)  Objects removed!  $(RESET)"
 
 fclean: clean
 	@make -sC libft fclean
 	@rm -rf $(NAME)
-	@echo "$(CBOLD)$(RED)  Binaries removed! $(RESET)\n"
+	@echo "$(CBOLD)$(BLUE)  Binaries removed! $(RESET)"
 
 re: fclean all
 

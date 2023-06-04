@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/03 21:35:32 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/04 20:51:21 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <unistd.h>
 
 // window dimensions
-# define WIDTH 700
-# define HEIGHT 600
+# define WIDTH 1000
+# define HEIGHT 800
 
 // hooks
 # define ESC 65307
@@ -35,8 +35,8 @@
 // complex numbers
 typedef struct s_cnum
 {
-	double	a;
-	double	b;
+	float	a;
+	float	b;
 }	t_cnum;
 
 // complex plane
@@ -74,14 +74,13 @@ typedef struct s_fractal
 {
 	t_window	*win;
 	t_plane		*plane;
-	t_cnum		*cnum;
 	char		*name;
 	int			iter;
 	char		*cache;
 }	t_fractal;
 
 // fractal's validation
-int		ft_valid_args(char **argv);
+void	*ft_valid_args(char *frac);
 bool	initialization(t_fractal *fractal);
 int		ft_error(char *heading, char *message);
 int		exit_fractal(t_fractal *fractal);
@@ -101,7 +100,13 @@ int		create_cache(t_fractal *fractal);
 t_data	*retrive_cache(t_fractal *fractal);
 
 // computation functions
-void	create_mandelbrot(t_fractal *fractal);
-int 	is_stable(t_cnum inum, t_cnum z_num, int iter);
+t_cnum		*get_cnum(int x, int y, t_plane *plane);
+void 		show_tree(t_fractal *fractal);
+void 		show_julia(t_fractal *fractal);
+void		show_mandelbrot(t_fractal *fractal);
+int			is_julia_stable(t_cnum *inum, t_cnum *c, int iter);
+int 		is_stable(t_cnum *inum, int iter);
+float 		map_range(int num, int lower, int upper, int lower_new, int upper_new);
+int			which_quadrant(int x, int y, int height, int width);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/30 00:03:09 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/04 19:40:28 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	mouse_hooks(int button, int mouse_x, int mouse_y, void *param)
 	t_fractal	*fractal;
 
 	fractal = (t_fractal *)param;
-	ft_printf("Mouse button %d pressed at (%d, %d)\n", button, mouse_x, mouse_y);
-	ft_printf("on cplane x: %d\n", mouse_x - fractal->win->width / 2);
-	ft_printf("on cplane i: %d\n", mouse_y - fractal->win->height / 2);
+	ft_printf("At (x: %d, y: %d)\n", mouse_x, mouse_y);
+	// printf("maped x: %f\n", map_range(mouse_x, 0, fractal->win->width, -2, 2));
+	// printf("maped y: %f\n", map_range(mouse_y, 0, fractal->win->height, 2, -2));
 	(void)button;
 	return (0);
 }

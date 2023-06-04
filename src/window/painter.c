@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:59:46 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/26 21:02:10 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/04 20:18:13 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int put_background(t_fractal *fractal)
         y = 0;
         while (y < fractal->win->height)
         {
-            my_mlx_pixel_put(&fractal->win->img, x, y, gen_trgb(100, 90, 163, 163));
+            my_mlx_pixel_put(&fractal->win->img, x, y, gen_trgb(255, 0, 0, 0));
             y++;
         }
         x++;

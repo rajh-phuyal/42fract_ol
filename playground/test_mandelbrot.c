@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:11:10 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/30 13:23:47 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/04 16:45:03 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_plane(t_plane *plane)
     plane->i_neg = -2.0f;
 }
 
+// https://complex-analysis.com/applets/p5js/mandelbrot/
 void create_cordinates(t_plane *plane, t_mandelbrot *mandelbrot)
 {
     mandelbrot->c.a = plane->x_pos + (plane->x_neg - plane->x_pos) * plane->x0 / WIDTH;
