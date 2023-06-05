@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:53:11 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/04 20:54:10 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/05 12:05:24 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	*ft_valid_args(char *frac)
 {
-	if (!ft_strncmp(frac, "mandelbrot", ft_strlen(frac)))
+	if (!ft_strncmp(frac, "mandelbrot", 10))
 		return (show_mandelbrot);
-	else if (!ft_strncmp(frac, "julia", ft_strlen(frac)))
+	else if (!ft_strncmp(frac, "julia", 10))
 		return (show_julia);
-	else if (!ft_strncmp(frac, "tree", ft_strlen(frac)))
+	else if (!ft_strncmp(frac, "tree", 10))
 		return (show_tree);
-	return (EXIT_SUCCESS);
+	return (NULL);
 }
 
 int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
-	void		(*func)(t_fractal *);
 	int			valid;
-	
+	void		(*show)(t_fractal *);
+
 	if (argc == 2)
 	{
-		func = ft_valid_args(argv[1]);
-		if (!func)
+		show = ft_valid_args(argv[1]);
+		if (!show)
 			return ft_printf("Available: [mandelbrot | julia | tree]\n");
 		fractal.name = argv[1];
 		valid = initialization(&fractal);
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		mlx_hook(fractal.win->win, 17, 0, exit_fractal, &fractal);
 		mlx_key_hook (fractal.win->win, key_hooks, &fractal);
 		mlx_mouse_hook(fractal.win->win, mouse_hooks, &fractal);
-		func(&fractal);
+		show(&fractal);
 		mlx_loop(fractal.win->mlx);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 20:48:14 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/04 20:48:28 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/04 22:38:24 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void show_tree(t_fractal *fractal)
 			iter_left = is_stable(&inum, fractal->iter);
 			if (!iter_left)
 			{
-				my_mlx_pixel_put(&fractal->win->img, x, y, 
-						gen_trgb(255, 255, 255, 255));
+				my_mlx_pixel_put(&fractal->win->img, x, y,
+						gen_trgb(255, 255, 0, 0));
 			}
 			y++;
 		}

@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:54:05 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/04 20:32:49 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/05 12:04:38 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void show_mandelbrot(t_fractal *fractal)
 			inum.b = map_range(y, 0, fractal->win->height,
 						fractal->plane->i_pos, fractal->plane->i_neg);
 			iter_left = is_stable(&inum, fractal->iter);
-			if (!iter_left)
+			if (iter_left == 0)
 			{
-				my_mlx_pixel_put(&fractal->win->img, x, y, 
+				my_mlx_pixel_put(&fractal->win->img, x, y,
 						gen_trgb(255, 255, 255, 255));
 			}
 			y++;

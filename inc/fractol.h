@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/04 20:51:21 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/05 12:04:27 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		exit_fractal(t_fractal *fractal);
 
 // window functions
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		put_background(t_fractal *fractal);
+void	put_background(t_fractal *fractal);
 int		get_b(int trgb);
 int		gen_trgb(int opacity, int red, int green, int blue);
 int		key_hooks(int key_pressed, void *param);

@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/03 21:26:23 by rphuyal           #+#    #+#              #
-#    Updated: 2023/06/04 20:52:50 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/06/04 21:44:17 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME  = fractol
 
 OS    = $(shell uname)
 
-CC    = @gcc -no-pie
+CC    = @gcc
 
 FLAGS = -g -fsanitize=address
 
