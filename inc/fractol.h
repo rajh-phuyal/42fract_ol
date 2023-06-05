@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/05 12:04:27 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/05 16:05:30 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <unistd.h>
 
 // window dimensions
-# define WIDTH 1000
-# define HEIGHT 800
+# define WIDTH 1100
+# define HEIGHT 900
 
 // hooks
 # define ESC 65307
@@ -35,8 +35,8 @@
 // complex numbers
 typedef struct s_cnum
 {
-	float	a;
-	float	b;
+	double	a;
+	double	b;
 }	t_cnum;
 
 // complex plane
@@ -74,6 +74,7 @@ typedef struct s_fractal
 {
 	t_window	*win;
 	t_plane		*plane;
+	t_cnum		jconst;
 	char		*name;
 	int			iter;
 	char		*cache;
@@ -100,13 +101,12 @@ int		create_cache(t_fractal *fractal);
 t_data	*retrive_cache(t_fractal *fractal);
 
 // computation functions
-t_cnum		*get_cnum(int x, int y, t_plane *plane);
-void 		show_tree(t_fractal *fractal);
-void 		show_julia(t_fractal *fractal);
+t_cnum		get_cnum(int x, int y, t_fractal *fractal);
+void		show_tree(t_fractal *fractal);
+void		show_julia(t_fractal *fractal);
 void		show_mandelbrot(t_fractal *fractal);
-int			is_julia_stable(t_cnum *inum, t_cnum *c, int iter);
-int 		is_stable(t_cnum *inum, int iter);
-float 		map_range(int num, int lower, int upper, int lower_new, int upper_new);
-int			which_quadrant(int x, int y, int height, int width);
+int 		is_julia_stable(t_cnum inum, t_cnum c, int iter);
+int			is_mandel_stable(t_cnum inum, int iter);
+double		map_range(int num, t_fractal *fractal, char dimension);
 
 #endif

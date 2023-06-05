@@ -6,21 +6,18 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:31:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/04 20:17:18 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/05 16:05:28 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-t_cnum	*get_cnum(int x, int y, t_plane *plane)
+t_cnum	get_cnum(int x, int y, t_fractal *fractal)
 {
-	t_cnum	*cnum;
+	t_cnum	cnum;
 
-	cnum = malloc(sizeof(t_cnum));
-	if (!cnum)
-		return (NULL);
-	cnum->a = (x * ((fabs(plane->x_pos) + fabs(plane->x_neg)) / WIDTH)) + plane->x_pos;
-	cnum->b = plane->i_pos - (y * ((fabs(plane->i_neg) + fabs(plane->i_pos)) / HEIGHT));
+	cnum.a = map_range(x, fractal, 'x');
+	cnum.b = map_range(y, fractal, 'y');
 	return (cnum);
 }
 
@@ -51,9 +48,9 @@ t_window	*get_window(char *name)
 	window->win = mlx_new_window(window->mlx, WIDTH, HEIGHT, name);
 	window->img.img = mlx_new_image(window->mlx, WIDTH, HEIGHT);
 	window->img.addr = mlx_get_data_addr(window->img.img,
-						&window->img.bits_per_pixel,
-						&window->img.line_length,
-						&window->img.endian);
+			&window->img.bits_per_pixel,
+			&window->img.line_length,
+			&window->img.endian);
 	free(name);
 	if (window->mlx == NULL || window->win == NULL)
 	{
@@ -67,9 +64,14 @@ t_window	*get_window(char *name)
 
 bool	initialization(t_fractal *fractal)
 {
+	t_cnum	jul;
+
 	fractal->win = get_window(ft_strjoin("Fractal : ", fractal->name));
 	fractal->plane = get_complex_plane();
-	fractal->iter = 80;
+	fractal->iter = 100;
+	jul.a = -0.8f;
+	jul.b = 0.156f;
+	fractal->jconst = jul;
 	if (!fractal->win || !fractal->plane)
 		return (false);
 	return (true);

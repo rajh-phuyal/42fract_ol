@@ -6,19 +6,31 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:53:11 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/05 12:05:24 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/05 16:13:40 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-void	*ft_valid_args(char *frac)
+int	print_options(int ac_error)
 {
-	if (!ft_strncmp(frac, "mandelbrot", 10))
+	if (ac_error == 1)
+	{
+		ft_printf("Invalid number of arguments!!\n");
+		ft_printf("Uses: ./fractol [mandelbrot | julia | tree]\n");
+	}
+	else if (ac_error == 2)
+		ft_printf("Available fractals: [mandelbrot | julia | tree]\n");
+	return (ac_error);
+}
+
+void	*ft_valid_args(char *name)
+{
+	if (!ft_strncmp(name, "mandelbrot", 10))
 		return (show_mandelbrot);
-	else if (!ft_strncmp(frac, "julia", 10))
+	else if (!ft_strncmp(name, "julia", 10))
 		return (show_julia);
-	else if (!ft_strncmp(frac, "tree", 10))
+	else if (!ft_strncmp(name, "tree", 10))
 		return (show_tree);
 	return (NULL);
 }
@@ -33,7 +45,7 @@ int	main(int argc, char **argv)
 	{
 		show = ft_valid_args(argv[1]);
 		if (!show)
-			return ft_printf("Available: [mandelbrot | julia | tree]\n");
+			return (print_options(argc) - 2);
 		fractal.name = argv[1];
 		valid = initialization(&fractal);
 		if (!valid)
@@ -45,6 +57,6 @@ int	main(int argc, char **argv)
 		mlx_loop(fractal.win->mlx);
 	}
 	else
-		ft_printf("Invalid arguments!! Use: ./fractol [mandelbrot | julia | tree]\n");
+		print_options(argc);
 	return (0);
 }
