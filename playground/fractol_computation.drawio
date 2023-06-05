@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-05T16:14:07.922Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="T37oA61VC9U_pmmY46Ra" version="21.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-05T16:22:03.328Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="4nIobECP583dJIbiSriT" version="21.3.6" type="github">
   <diagram name="Page-1" id="W8NE1EDhPZZKBVcKvTwS">
-    <mxGraphModel dx="2318" dy="1317" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1700" math="0" shadow="0">
+    <mxGraphModel dx="2140" dy="1215" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1700" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -40,10 +40,10 @@
         <mxCell id="gn7PbFdSq3j0uZ2z6-hb-3" value="&lt;i style=&quot;font-family: &amp;quot;Nimbus Roman No9 L&amp;quot;, &amp;quot;Times New Roman&amp;quot;, Times, serif; font-size: 16.52px; text-align: start;&quot;&gt;&lt;font style=&quot;background-color: rgb(255, 255, 255);&quot; color=&quot;#000000&quot;&gt;- i&lt;/font&gt;&lt;/i&gt;" style="text;html=1;strokeColor=none;fillColor=#ffffff;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="560" y="520" width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gn7PbFdSq3j0uZ2z6-hb-4" target="gn7PbFdSq3j0uZ2z6-hb-8">
+        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="gn7PbFdSq3j0uZ2z6-hb-4" target="gn7PbFdSq3j0uZ2z6-hb-15">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="gn7PbFdSq3j0uZ2z6-hb-4" target="gn7PbFdSq3j0uZ2z6-hb-15">
+        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="gn7PbFdSq3j0uZ2z6-hb-4" target="gn7PbFdSq3j0uZ2z6-hb-19">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="gn7PbFdSq3j0uZ2z6-hb-4" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;change the (x, y) value of the screen to (a + bi)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -58,23 +58,20 @@
         <mxCell id="gn7PbFdSq3j0uZ2z6-hb-7" value="(a + bi)" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;backgroundOutline=1;" connectable="0" vertex="1" parent="gn7PbFdSq3j0uZ2z6-hb-6">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gn7PbFdSq3j0uZ2z6-hb-8" target="gn7PbFdSq3j0uZ2z6-hb-10">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-8" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Map the number&#39;s range from &lt;br&gt;0 to width to x to -x&amp;nbsp;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="440" y="620" width="200" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="gn7PbFdSq3j0uZ2z6-hb-10" target="gn7PbFdSq3j0uZ2z6-hb-13">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-10" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Map the number&#39;s range from &lt;br&gt;0 to height to -i to i&amp;nbsp;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="695" y="620" width="200" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-13" value="a + bi = maped x + maped y" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="720" width="190" height="50" as="geometry" />
-        </mxCell>
         <mxCell id="gn7PbFdSq3j0uZ2z6-hb-15" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="180" y="850" width="220" height="60" as="geometry" />
+          <mxGeometry x="180" y="770" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-18" value="" style="swimlane;childLayout=stackLayout;horizontal=1;fillColor=none;horizontalStack=1;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;strokeColor=none;stackBorder=10;stackSpacing=-12;resizable=1;align=center;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="590" width="570" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-19" value="Convert X pos in the screen&lt;br style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;to range of plane&#39;s -x to x&lt;/span&gt;" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="gn7PbFdSq3j0uZ2z6-hb-18">
+          <mxGeometry x="10" y="33" width="200" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-20" value="Convert y pos in the screen&lt;br style=&quot;font-size: 14px;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;to range of plane&#39;s i to -i&lt;/span&gt;" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="gn7PbFdSq3j0uZ2z6-hb-18">
+          <mxGeometry x="198" y="33" width="202" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="gn7PbFdSq3j0uZ2z6-hb-21" value="a + bi =&lt;br&gt;&amp;nbsp;maped x + maped y" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="gn7PbFdSq3j0uZ2z6-hb-18">
+          <mxGeometry x="388" y="33" width="172" height="57" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
