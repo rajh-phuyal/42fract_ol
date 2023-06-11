@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/03 21:26:23 by rphuyal           #+#    #+#              #
-#    Updated: 2023/06/04 21:44:17 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/06/11 16:34:24 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC   = src/core/main.c \
 			src/window/hooks.c \
 			src/window/painter.c \
 			src/window/colors.c \
+			src/window/zoom.c \
 			src/cache/hash_id.c \
 			src/cache/crud.c \
 			src/computes/helper.c \
