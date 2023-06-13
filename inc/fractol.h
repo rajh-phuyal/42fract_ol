@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/12 20:47:14 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/13 15:43:09 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ typedef struct s_plane
 }	t_plane;
 
 // image data
-typedef struct s_data {
+typedef struct s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
+}	t_img;
 
 // window data
 typedef struct s_window
@@ -66,10 +66,12 @@ typedef struct s_window
 	void	*win;
 	int		width;
 	int		height;
-	t_data	img;
+	t_img	img;
 }	t_window;
 
 // big daddy
+typedef struct s_fractal t_fractal;
+
 typedef struct s_fractal
 {
 	t_window	*win;
@@ -78,18 +80,21 @@ typedef struct s_fractal
 	char		*name;
 	int			iter;
 	char		*cache;
+	void		(*show)(t_fractal *);
 }	t_fractal;
 
 // fractal's validation
 void	*ft_valid_args(char *frac);
 bool	initialization(t_fractal *fractal);
+t_window	*get_window(char *name);
+t_img		get_image(t_window *win, int width, int height);
 int		ft_error(char *heading, char *message);
 int		exit_fractal(t_fractal *fractal);
 
 // window functions
 void    zoom_in(t_fractal *fractal, int x, int y);
 void    zoom_out(t_fractal *fractal, int x, int y);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	put_background(t_fractal *fractal);
 int		get_b(int trgb);
 int		gen_trgb(int opacity, int red, int green, int blue);
@@ -100,7 +105,7 @@ int		exit_fractal(t_fractal *fractal);
 // cache functions
 char	*create_hash_id(int width, int height, char *name);
 int		create_cache(t_fractal *fractal);
-t_data	*retrive_cache(t_fractal *fractal);
+t_img	*retrive_cache(t_fractal *fractal);
 
 // computation functions
 t_cnum		get_cnum(int x, int y, t_fractal *fractal);

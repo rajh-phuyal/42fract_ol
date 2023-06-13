@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/12 20:46:37 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/13 14:25:28 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ int	mouse_hooks(int button, int mouse_x, int mouse_y, void *param)
 	(void)button;
 	if (button == 4)
 		zoom_in(fractal, mouse_x, mouse_y);
+	else if (button == 5)
+		zoom_out(fractal, mouse_x, mouse_y);
 	return (0);
 }

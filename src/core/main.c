@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:53:11 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/12 20:41:54 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/13 15:17:18 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,14 @@ int	main(int argc, char **argv)
 		if (!show)
 			return (print_options(argc) - 2);
 		fractal.name = argv[1];
+		fractal.show = show;
 		valid = initialization(&fractal);
 		if (!valid)
 			return (ft_printf("Error: Failed to initialize program!\n"));
 		mlx_hook(fractal.win->win, 17, 0, exit_fractal, &fractal);
 		mlx_key_hook (fractal.win->win, key_hooks, &fractal);
 		mlx_mouse_hook(fractal.win->win, mouse_hooks, &fractal);
-		show(&fractal);
+		fractal.show(&fractal);
 		mlx_loop(fractal.win->mlx);
 	}
 	else

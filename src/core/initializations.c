@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:31:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/05 16:05:28 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/13 15:37:57 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ t_plane	*get_complex_plane(void)
 	return (plane);
 }
 
+t_img	get_image(t_window *win, int width, int height)
+{
+	t_img	img;
+
+	img.img = mlx_new_image(win->mlx, width, height);
+	img.addr = mlx_get_data_addr(img.img,
+			&img.bits_per_pixel,
+			&img.line_length,
+			&img.endian);
+	return (img);
+}
+
 t_window	*get_window(char *name)
 {
 	t_window	*window;
@@ -46,11 +58,7 @@ t_window	*get_window(char *name)
 		return (NULL);
 	window->mlx = mlx_init();
 	window->win = mlx_new_window(window->mlx, WIDTH, HEIGHT, name);
-	window->img.img = mlx_new_image(window->mlx, WIDTH, HEIGHT);
-	window->img.addr = mlx_get_data_addr(window->img.img,
-			&window->img.bits_per_pixel,
-			&window->img.line_length,
-			&window->img.endian);
+	window->img = get_image(window, WIDTH, HEIGHT);
 	free(name);
 	if (window->mlx == NULL || window->win == NULL)
 	{

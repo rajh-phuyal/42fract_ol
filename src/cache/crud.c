@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:11:56 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/05/28 20:36:19 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/13 15:08:09 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int create_cache(t_fractal *fractal)
     return (0);
 }
 
-t_data   *retrive_cache(t_fractal *fractal)
+t_img   *retrive_cache(t_fractal *fractal)
 {
     int     fd;
     char    *id;
