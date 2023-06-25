@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/13 15:43:09 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/25 15:53:21 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int		exit_fractal(t_fractal *fractal);
 // window functions
 void    zoom_in(t_fractal *fractal, int x, int y);
 void    zoom_out(t_fractal *fractal, int x, int y);
+void    change_center(t_fractal *fractal, int x, int y);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	put_background(t_fractal *fractal);
 int		get_b(int trgb);
