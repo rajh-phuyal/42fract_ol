@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:53:11 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/13 15:17:18 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/25 18:36:49 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
 	int			valid;
-	void		(*show)(t_fractal *);
+	void		(*show)(t_fractal *, bool);
 
 	if (argc == 2)
 	{
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 		mlx_hook(fractal.win->win, 17, 0, exit_fractal, &fractal);
 		mlx_key_hook (fractal.win->win, key_hooks, &fractal);
 		mlx_mouse_hook(fractal.win->win, mouse_hooks, &fractal);
-		fractal.show(&fractal);
+		fractal.show(&fractal, true);
 		mlx_loop(fractal.win->mlx);
 	}
 	else

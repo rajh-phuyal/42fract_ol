@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/25 15:52:25 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/25 17:01:35 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	mouse_hooks(int button, int mouse_x, int mouse_y, void *param)
 
 	fractal = (t_fractal *)param;
 	ft_printf("At (x: %d, y: %d)\n", mouse_x, mouse_y);
-	printf("maped x: %f\n", map_range(mouse_x, fractal, 'x'));
-	printf("maped y: %f\n", map_range(mouse_y, fractal, 'y'));
+	// printf("maped x: %f\n", map_range(mouse_x, fractal, 'x'));
+	// printf("maped y: %f\n", map_range(mouse_y, fractal, 'y'));
 	if (button == 1)
 		change_center(fractal, mouse_x, mouse_y);
 	if (button == 4)

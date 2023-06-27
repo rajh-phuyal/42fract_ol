@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:31:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/13 15:37:57 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/25 17:15:14 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ t_plane	*get_complex_plane(void)
 	plane = malloc(sizeof(t_plane));
 	if (!plane)
 		return (NULL);
-	plane->x_pos = 2.0f;
-	plane->x_neg = -3.0f;
-	plane->i_pos = 2.0f;
-	plane->i_neg = -2.0f;
-	plane->x0 = WIDTH / 2;
-	plane->i0 = HEIGHT / 2;
 	return (plane);
 }
 
@@ -76,7 +70,8 @@ bool	initialization(t_fractal *fractal)
 
 	fractal->win = get_window(ft_strjoin("Fractal : ", fractal->name));
 	fractal->plane = get_complex_plane();
-	fractal->iter = 100;
+	if (fractal->show)
+	fractal->iter = 70;
 	jul.a = -0.8f;
 	jul.b = 0.156f;
 	fractal->jconst = jul;

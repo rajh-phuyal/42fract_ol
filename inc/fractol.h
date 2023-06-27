@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/25 15:53:21 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/25 18:53:10 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <unistd.h>
 
 // window dimensions
-# define WIDTH 1100
-# define HEIGHT 900
+# define WIDTH 1600
+# define HEIGHT 1200
 
 // hooks
 # define ESC 65307
@@ -80,7 +80,7 @@ typedef struct s_fractal
 	char		*name;
 	int			iter;
 	char		*cache;
-	void		(*show)(t_fractal *);
+	void		(*show)(t_fractal *, bool);
 }	t_fractal;
 
 // fractal's validation
@@ -110,9 +110,9 @@ t_img	*retrive_cache(t_fractal *fractal);
 
 // computation functions
 t_cnum		get_cnum(int x, int y, t_fractal *fractal);
-void		show_tree(t_fractal *fractal);
-void		show_julia(t_fractal *fractal);
-void		show_mandelbrot(t_fractal *fractal);
+void		show_tree(t_fractal *fractal, bool first);
+void		show_julia(t_fractal *fractal, bool first);
+void		show_mandelbrot(t_fractal *fractal, bool first);
 int 		is_julia_stable(t_cnum inum, t_cnum c, int iter);
 int			is_mandel_stable(t_cnum inum, int iter);
 double		map_range(int num, t_fractal *fractal, char dimension);

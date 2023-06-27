@@ -12,12 +12,14 @@
 
 #include "../../inc/fractol.h"
 
-void	show_tree(t_fractal *fractal)
+void	show_tree(t_fractal *fractal, bool first)
 {
 	int		x;
 	int		y;
 	int		iter_left;
 
+	if (first)
+		x = 0;
 	x = 0;
 	while (x < fractal->win->width)
 	{
