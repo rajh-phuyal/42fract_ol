@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_id.c                                          :+:      :+:    :+:   */
+/*   hooks.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/28 20:28:51 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 20:52:44 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/07/02 19:59:20 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/07/02 20:04:47 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/fractol.h"
+#ifndef HOOKS_H
+# define HOOKS_H
 
-unsigned long   create_hash_id(int width, int height, double view)
-{
-    unsigned long id;
+// hooks
+# define ESC 65307
+# define ZOOM_IN 69
+# define ZOOM_OUT 78
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
+# define KEYPRESS 2
+# define KEYRELEASE 3
 
-    id = 5381;
-    id = ((id << 3) + id) + width;
-    id = ((id << 3) + id) + height;
-    id = ((id << 3) + id) + view;
-    return (id);
-}
+
+# endif

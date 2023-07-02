@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/11 16:33:26 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 19:27:18 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/06/11 16:33:26 0.1f rphuyal           #+#    #+#             */
+/*   Updated: 2023/07/02 19:41:47 0.1f rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ void    change_center(t_fractal *fractal, int x, int y)
     fractal->show(fractal, false);
 }
 
-void    zoom_in(t_fractal *fractal, int x, int y, int by)
+void    zoom_in(t_fractal *fractal, int x, int y)
 {
-    change_center(fractal, x, y);
-    fractal->plane->x_pos -= 0.1f;
-    fractal->plane->x_neg += 0.1f;
-	fractal->plane->i_pos -= 0.1f;
-	fractal->plane->i_neg += 0.1f;
+    // change_center(fractal, x, y);
+    fractal->plane->x_pos -= 0.08f;
+    fractal->plane->x_neg += 0.08f;
+	fractal->plane->i_pos -= 0.08f;
+	fractal->plane->i_neg += 0.08f;
     mlx_destroy_image(fractal->win->mlx, fractal->win->img.img);
     fractal->win->img = get_image(fractal->win, fractal->win->width, fractal->win->height);
     fractal->show(fractal, false);
 }
 
-void    zoom_out(t_fractal *fractal, int x, int y, int by)
+void    zoom_out(t_fractal *fractal, int x, int y)
 {
-    change_center(fractal, x, y);
+    // change_center(fractal, x, y);
     fractal->plane->x_pos += 0.1f;
 	fractal->plane->x_neg -= 0.1f;
 	fractal->plane->i_pos += 0.1f;

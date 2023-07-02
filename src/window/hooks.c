@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 19:25:17 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/02 20:40:05 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ int	key_hooks(int key_pressed, void *param)
 	t_fractal	*fractal;
 
 	fractal = (t_fractal *)param;
+	if (key_pressed == UP)
+		ft_printf("UP\n");
+	if (key_pressed == DOWN)
+		ft_printf("DOWN\n");
+	if (key_pressed == LEFT)
+		ft_printf("LEFT\n");
+	if (key_pressed == RIGHT)
+		ft_printf("RIGHT\n");
 	if (key_pressed == ESC || !fractal)
 		exit_fractal(fractal);
 	else
@@ -36,10 +44,9 @@ int	mouse_hooks(int button, int mouse_x, int mouse_y, void *param)
 	t_fractal	*fractal;
 
 	fractal = (t_fractal *)param;
-	ft_printf("At (x: %d, y: %d)\n", mouse_x, mouse_y);
 	if (button == 4)
-		zoom_in(fractal, mouse_x, mouse_y, 0.1f);
+		zoom_in(fractal, mouse_x, mouse_y);
 	else if (button == 5)
-		zoom_out(fractal, mouse_x, mouse_y, 0.3f);
+		zoom_out(fractal, mouse_x, mouse_y);
 	return (0);
 }

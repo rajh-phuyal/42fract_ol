@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:31:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/25 17:15:14 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/02 19:57:19 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ bool	initialization(t_fractal *fractal)
 	fractal->win = get_window(ft_strjoin("Fractal : ", fractal->name));
 	fractal->plane = get_complex_plane();
 	if (fractal->show)
-	fractal->iter = 70;
+	fractal->iter = 80;
 	jul.a = -0.8f;
 	jul.b = 0.156f;
 	fractal->jconst = jul;

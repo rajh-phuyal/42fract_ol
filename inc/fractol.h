@@ -6,13 +6,14 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/25 18:53:10 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/02 20:53:10 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# include "./hooks.h"
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
@@ -22,15 +23,8 @@
 # include <unistd.h>
 
 // window dimensions
-# define WIDTH 1600
-# define HEIGHT 1200
-
-// hooks
-# define ESC 65307
-# define ZOOM_IN 69
-# define ZOOM_OUT 78
-# define KEYPRESS 2
-# define KEYRELEASE 3
+# define WIDTH 1000
+# define HEIGHT 800
 
 // complex numbers
 typedef struct s_cnum
@@ -69,6 +63,12 @@ typedef struct s_window
 	t_img	img;
 }	t_window;
 
+typedef struct s_cache
+{
+	int				view;
+	t_img			*img;
+}	t_cache;
+
 // big daddy
 typedef struct s_fractal t_fractal;
 
@@ -76,12 +76,13 @@ typedef struct s_fractal
 {
 	t_window	*win;
 	t_plane		*plane;
+	t_cache		cache;
 	t_cnum		jconst;
 	char		*name;
 	int			iter;
-	char		*cache;
 	void		(*show)(t_fractal *, bool);
 }	t_fractal;
+
 
 // fractal's validation
 void	*ft_valid_args(char *frac);

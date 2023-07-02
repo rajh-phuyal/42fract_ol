@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:54:05 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/25 18:52:37 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/02 20:39:59 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	put_color(t_fractal *fractal, int diff, int x, int y)
 	int	color;
 
 	if (diff == 0)
-		color = 0x000000;
-	else if (diff <= 20)
-		color = 0x008fb3;
+		color = 0x00000a;
+	else if (diff <= 30)
+		color = 0x2952a3;
 	else
 		color = gen_trgb(255, (diff * 255) / diff, 0, 0);
 	my_mlx_pixel_put(&fractal->win->img, x, y, color);
