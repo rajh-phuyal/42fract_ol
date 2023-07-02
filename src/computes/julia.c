@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 20:12:02 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/13 15:36:30 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/02 19:24:03 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	show_julia(t_fractal *fractal, bool first)
 	if (first)
 		init_julia_plane(fractal);
 	x = 0;
-	// fractal->plane->x_neg += 1;
 	while (x < fractal->win->width)
 	{
 		y = 0;
