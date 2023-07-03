@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 20:40:05 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/03 01:44:29 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ int	mouse_hooks(int button, int mouse_x, int mouse_y, void *param)
 	t_fractal	*fractal;
 
 	fractal = (t_fractal *)param;
+	// if (button == 1)
+	// 	change_center(fractal, mouse_x, mouse_y);
 	if (button == 4)
-		zoom_in(fractal, mouse_x, mouse_y);
+		zoom_in(fractal, (double)mouse_x, (double)mouse_y);
 	else if (button == 5)
-		zoom_out(fractal, mouse_x, mouse_y);
+		zoom_out(fractal, (double)mouse_x, (double)mouse_y);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 20:53:10 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/03 01:36:47 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <unistd.h>
 
 // window dimensions
-# define WIDTH 1000
+# define WIDTH 900
 # define HEIGHT 800
 
 // complex numbers
@@ -67,6 +67,8 @@ typedef struct s_cache
 {
 	int				view;
 	t_img			*img;
+	t_img			*next;
+	t_img			*prev;
 }	t_cache;
 
 // big daddy
@@ -93,21 +95,16 @@ int		ft_error(char *heading, char *message);
 int		exit_fractal(t_fractal *fractal);
 
 // window functions
-void    zoom_in(t_fractal *fractal, int x, int y);
-void    zoom_out(t_fractal *fractal, int x, int y);
+void    zoom_in(t_fractal *fractal, double x, double y);
+void    zoom_out(t_fractal *fractal, double x, double y);
 void    change_center(t_fractal *fractal, int x, int y);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	put_background(t_fractal *fractal);
 int		get_b(int trgb);
-int		gen_trgb(int opacity, int red, int green, int blue);
+int		get_color(int op, int r, int g, int b);
 int		key_hooks(int key_pressed, void *param);
 int		mouse_hooks(int button, int mouse_x, int mouse_y, void *param);
 int		exit_fractal(t_fractal *fractal);
-
-// cache functions
-char	*create_hash_id(int width, int height, char *name);
-int		create_cache(t_fractal *fractal);
-t_img	*retrive_cache(t_fractal *fractal);
 
 // computation functions
 t_cnum		get_cnum(int x, int y, t_fractal *fractal);

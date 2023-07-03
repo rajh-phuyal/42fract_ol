@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 20:12:02 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 19:24:03 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/03 01:12:15 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,23 @@ void	init_julia_plane(t_fractal *fractal)
 	fractal->plane->i_pos = 2.0f;
 	fractal->plane->i_neg = -2.0f;
 	fractal->plane->x0 = map_range(WIDTH / 2, fractal, 'x');
-	fractal->plane->i0 = map_range(HEIGHT / 2, fractal, 'x');
+	fractal->plane->i0 = map_range(HEIGHT / 2, fractal, 'y');
 }
 
-void	put_color(t_fractal *fractal, int diff, int x, int y);
+void	put_julia_color(t_fractal *fractal, int diff, int x, int y)
+{
+	int	color;
+
+	if (diff == 0)
+		color = 0x000000;
+	else if (diff <= 10)
+		color = 0x008FB3;
+	else if (diff <= 15)
+		color = 0x006600;
+	// else if (diff <= 30)
+	// 	color = 0xFFFFFF;
+	my_mlx_pixel_put(&fractal->win->img, x, y, color);
+}
 
 void	show_julia(t_fractal *fractal, bool first)
 {
@@ -40,7 +53,7 @@ void	show_julia(t_fractal *fractal, bool first)
 		{
 			iter_left = is_julia_stable(get_cnum(x, y, fractal),
 					fractal->jconst, fractal->iter);
-			put_color(fractal, iter_left, x, y);
+			put_julia_color(fractal, iter_left, x, y);
 			y++;
 		}
 		x++;

@@ -6,13 +6,13 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:59:46 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 20:50:25 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/03 00:36:26 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-int	et_color(int op, int r, int g, int b)
+int	get_color(int op, int r, int g, int b)
 {
 	if (op > 255 || r > 255 || g > 255 || b > 255)
 		return (0);

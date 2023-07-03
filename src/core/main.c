@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:53:11 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/25 18:36:49 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/02 22:34:00 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	print_options(int ac_error)
 	{
 		ft_printf("Invalid number of arguments!!\n");
 		ft_printf("Uses: ./fractol [mandelbrot | julia | tree]\n");
+		ft_printf("Move View: [UP | DOWN | LEFT | RIGHT]\n");
 	}
 	else if (ac_error == 2)
 		ft_printf("Available fractals: [mandelbrot | julia | tree]\n");
