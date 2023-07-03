@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 20:12:02 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/03 01:12:15 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/03 13:37:43 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	put_julia_color(t_fractal *fractal, int diff, int x, int y)
 
 	if (diff == 0)
 		color = 0x000000;
-	else if (diff <= 10)
-		color = 0x008FB3;
 	else if (diff <= 15)
-		color = 0x006600;
-	// else if (diff <= 30)
-	// 	color = 0xFFFFFF;
+		color = get_color(255, 0, (255 * diff) / fractal->iter, 0);
+	else if (diff <= 25)
+		color = get_color(255, (255 * diff) / fractal->iter, 0, 0);
+	else if (diff <= 50)
+		color = 0xFFFFFF;
 	my_mlx_pixel_put(&fractal->win->img, x, y, color);
 }
 

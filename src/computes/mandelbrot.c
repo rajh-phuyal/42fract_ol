@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:54:05 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/03 01:12:07 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/03 15:19:24 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	put_mandel_color(t_fractal *fractal, int diff, int x, int y)
 	if (diff == 0)
 		color = 0x000000;
 	else if (diff <= 10)
-		color = 0x008FB3;
-	else if (diff <= 15)
-		color = 0x006600;
+		color = get_color(255, 0, 0, (255 * diff) / fractal->iter);
+	else if (diff <= 14)
+		color = get_color(255, (255 * diff) / fractal->iter, 0, 0);
 	else if (diff <= 40)
 		color = 0xFFFFFF;
 	my_mlx_pixel_put(&fractal->win->img, x, y, color);

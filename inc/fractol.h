@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/03 01:36:47 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/03 15:07:55 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 // libraries
 # include <math.h>
-# include <string.h>
-# include <unistd.h>
 
 // window dimensions
 # define WIDTH 900
@@ -36,8 +34,8 @@ typedef struct s_cnum
 // complex plane
 typedef struct s_plane
 {
-	int		x0;
-	int		i0;
+	double	x0;
+	double	i0;
 	double	x_pos;
 	double	x_neg;
 	double	i_pos;
@@ -63,14 +61,6 @@ typedef struct s_window
 	t_img	img;
 }	t_window;
 
-typedef struct s_cache
-{
-	int				view;
-	t_img			*img;
-	t_img			*next;
-	t_img			*prev;
-}	t_cache;
-
 // big daddy
 typedef struct s_fractal t_fractal;
 
@@ -78,7 +68,6 @@ typedef struct s_fractal
 {
 	t_window	*win;
 	t_plane		*plane;
-	t_cache		cache;
 	t_cnum		jconst;
 	char		*name;
 	int			iter;
@@ -87,7 +76,7 @@ typedef struct s_fractal
 
 
 // fractal's validation
-void	*ft_valid_args(char *frac);
+void		*ft_valid_args(char *frac);
 bool	initialization(t_fractal *fractal);
 t_window	*get_window(char *name);
 t_img		get_image(t_window *win, int width, int height);
@@ -97,7 +86,7 @@ int		exit_fractal(t_fractal *fractal);
 // window functions
 void    zoom_in(t_fractal *fractal, double x, double y);
 void    zoom_out(t_fractal *fractal, double x, double y);
-void    change_center(t_fractal *fractal, int x, int y);
+void    change_center(t_fractal *fractal, double x, double y);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	put_background(t_fractal *fractal);
 int		get_b(int trgb);

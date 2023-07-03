@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 19:59:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 20:04:47 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/03 13:50:06 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 // hooks
 # define ESC 65307
-# define ZOOM_IN 69
-# define ZOOM_OUT 78
+# define ZOOM_IN 4
+# define ZOOM_OUT 5
 # define UP 65362
 # define DOWN 65364
 # define LEFT 65361
