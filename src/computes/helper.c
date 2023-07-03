@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:26:44 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/05 16:16:48 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 00:20:37 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	is_julia_stable(t_cnum inum, t_cnum c, int iter)
 		bb = inum.b;
 		inum.a = aa * aa - bb * bb + c.a;
 		inum.b = 2 * aa * bb + c.b;
-
 		if (fabs(inum.a + inum.b) > 4)
 			return (i);
 	}
@@ -69,11 +68,35 @@ int	is_mandel_stable(t_cnum inum, int iter)
 		bb = temp.b;
 		temp.a = (aa * aa) - (bb * bb);
 		temp.b = 2 * aa * bb;
-
 		temp.a += inum.a;
 		temp.b += inum.b;
-
 		if (fabs(temp.a + temp.b) > 4)
+			return (i);
+	}
+	return (0);
+}
+
+int	is_bs_stable(t_cnum inum, t_cnum const_c, int iter)
+{
+	int		i;
+	double	aa;
+	double	bb;
+	t_cnum	temp;
+
+	i = 0;
+	temp = inum;
+	while (i++ < iter)
+	{
+		temp.a = fabs(temp.a);
+		temp.b = fabs(temp.b);
+		aa = temp.a;
+		bb = temp.b;
+		temp.a = (aa * aa) - (bb * bb);
+		temp.b = 2 * aa * bb;
+		temp.a += const_c.a;
+		temp.b += const_c.b;
+
+		if (fabs(temp.a + temp.b) > 2)
 			return (i);
 	}
 	return (0);

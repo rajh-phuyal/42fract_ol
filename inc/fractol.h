@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/03 15:07:55 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 00:18:22 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ int		exit_fractal(t_fractal *fractal);
 // window functions
 void    zoom_in(t_fractal *fractal, double x, double y);
 void    zoom_out(t_fractal *fractal, double x, double y);
-void    change_center(t_fractal *fractal, double x, double y);
+int    change_center(t_fractal *fractal, double val, int key);
+void	render_again(t_fractal *fractal);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	put_background(t_fractal *fractal);
 int		get_b(int trgb);
@@ -102,6 +103,7 @@ void		show_julia(t_fractal *fractal, bool first);
 void		show_mandelbrot(t_fractal *fractal, bool first);
 int 		is_julia_stable(t_cnum inum, t_cnum c, int iter);
 int			is_mandel_stable(t_cnum inum, int iter);
+int			is_bs_stable(t_cnum inum, t_cnum const_c, int iter);
 double		map_range(int num, t_fractal *fractal, char dimension);
 
 #endif

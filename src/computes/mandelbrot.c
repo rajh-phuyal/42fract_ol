@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:54:05 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/03 15:19:24 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 00:21:44 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	init_mandel_plane(t_fractal *fractal)
 	fractal->plane->x_neg = -2.8f;
 	fractal->plane->i_pos = 2.0f;
 	fractal->plane->i_neg = -2.0f;
-	fractal->plane->x0 = map_range(WIDTH / 2, fractal, 'x');
-	fractal->plane->i0 = map_range(HEIGHT / 2, fractal, 'y');
+	fractal->iter = 80;
 }
 
 void	put_mandel_color(t_fractal *fractal, int diff, int x, int y)
@@ -32,8 +31,8 @@ void	put_mandel_color(t_fractal *fractal, int diff, int x, int y)
 		color = get_color(255, 0, 0, (255 * diff) / fractal->iter);
 	else if (diff <= 14)
 		color = get_color(255, (255 * diff) / fractal->iter, 0, 0);
-	else if (diff <= 40)
-		color = 0xFFFFFF;
+	else
+		color = get_color(255, 0, (255 * diff) / fractal->iter, 0);
 	my_mlx_pixel_put(&fractal->win->img, x, y, color);
 }
 
