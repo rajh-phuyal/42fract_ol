@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/04 01:29:29 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 14:49:22 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ typedef struct s_fractal
 	t_cnum		jconst;
 	char		*name;
 	int			iter;
+	int			red;
+	int			green;
+	int			blue;
 	void		(*show)(t_fractal *, bool);
 }	t_fractal;
 
@@ -100,9 +103,9 @@ t_cnum		get_cnum(int x, int y, t_fractal *fractal);
 double		map_range(int num, t_fractal *fractal, char dimension);
 
 /* fractals */
-void		show_tree(t_fractal *fractal, bool first);
 void		show_julia(t_fractal *fractal, bool first);
 void		show_mandelbrot(t_fractal *fractal, bool first);
+void		show_burningship(t_fractal *fractal, bool first);
 int			julia_iteration(t_cnum inum, t_cnum const_c, int iter);
 int			mandelbrot_iteration(t_cnum inum, int iter);
 int			burningship_iteration(t_cnum inum, t_cnum const_c, int iter);

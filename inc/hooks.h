@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 19:59:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/04 01:26:29 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 15:08:06 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define LEFT 65361
 # define RIGHT 65363
 # define RESET 32
-# define JULIA_INC 106
-# define JULIA_DEC 65453
+# define INC_JULIA 65451
+# define DEC_JULIA 65453
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:54:05 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/04 01:21:38 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 14:56:11 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_mandelelbrot(t_fractal *fractal)
 	fractal->iter = 80;
 }
 
-void	put_mandel_color(t_fractal *fractal, int diff, int x, int y)
+void	color_mandelelbrot(t_fractal *fractal, int diff, int x, int y)
 {
 	int	color;
 
@@ -53,7 +53,7 @@ void	show_mandelbrot(t_fractal *fractal, bool first)
 		{
 			complex = get_cnum(x, y, fractal);
 			diff = mandelbrot_iteration(complex, fractal->iter);
-			put_mandel_color(fractal, diff, x, y);
+			color_mandelelbrot(fractal, diff, x, y);
 			y++;
 		}
 		x++;

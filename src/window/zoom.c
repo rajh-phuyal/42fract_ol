@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 23:00:03 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/04 01:56:20 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 15:15:28 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ void	zoom_in(t_fractal *fractal, double x, double y)
 	fractal->plane->x_neg = (fractal->plane->x_neg - at_x) / 1.5f + at_x;
 	fractal->plane->i_pos = (fractal->plane->i_pos - at_y) / 1.5f + at_y;
 	fractal->plane->i_neg = (fractal->plane->i_neg - at_y) / 1.5f + at_y;
+	fractal->red -= 10;
+	fractal->green -= 10;
+	fractal->blue -= 10;
 	render_again(fractal, false);
 }
 
@@ -66,5 +69,8 @@ void	zoom_out(t_fractal *fractal, double x, double y)
 	fractal->plane->x_neg = (fractal->plane->x_neg - at_x) * 1.5f + at_x;
 	fractal->plane->i_pos = (fractal->plane->i_pos - at_y) * 1.5f + at_y;
 	fractal->plane->i_neg = (fractal->plane->i_neg - at_y) * 1.5f + at_y;
+	fractal->red += 10;
+	fractal->green += 10;
+	fractal->blue += 10;
 	render_again(fractal, false);
 }

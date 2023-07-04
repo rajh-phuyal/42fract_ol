@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/04 01:59:02 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 15:15:41 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	check_view_keys(t_fractal *fractal, int key)
 
 	diff = 0.0f;
 	if (key == UP || key == DOWN)
-		diff = (fractal->plane->i_pos - fractal->plane->i_neg) * 0.3f;
+		diff = (fractal->plane->i_pos - fractal->plane->i_neg) * 0.1f;
 	else if (key == LEFT || key == RIGHT)
-		diff = (fractal->plane->x_pos - fractal->plane->x_neg) * 0.3f;
+		diff = (fractal->plane->x_pos - fractal->plane->x_neg) * 0.1f;
 	if (change_center(fractal, diff, key))
 		render_again(fractal, false);
 }
@@ -44,13 +44,13 @@ int	key_hooks(int key_pressed, void *param)
 		exit_fractal(fractal);
 	else if (key_pressed == RESET)
 		render_again(fractal, true);
-	else if (key_pressed == JULIA_INC)
+	else if (key_pressed == INC_JULIA)
 	{
 		fractal->jconst.a -= 0.001f;
 		fractal->jconst.b += 0.008f;
 		render_again(fractal, false);
 	}
-	else if (key_pressed == JULIA_DEC)
+	else if (key_pressed == DEC_JULIA)
 	{
 		fractal->jconst.a += 0.001f;
 		fractal->jconst.b -= 0.008f;

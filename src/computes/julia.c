@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 20:12:02 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/04 01:19:21 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 14:56:48 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_julia(t_fractal *fractal)
 	fractal->iter = 120;
 }
 
-void	put_julia_color(t_fractal *fractal, int diff, int x, int y)
+void	color_julia(t_fractal *fractal, int diff, int x, int y)
 {
 	int	color;
 
@@ -49,7 +49,7 @@ void	show_julia(t_fractal *fractal, bool first)
 		{
 			complex = get_cnum(x, y, fractal);
 			diff = julia_iteration(complex, fractal->jconst, fractal->iter);
-			put_julia_color(fractal, diff, x, y);
+			color_julia(fractal, diff, x, y);
 			y++;
 		}
 		x++;
