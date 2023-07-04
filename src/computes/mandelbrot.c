@@ -6,13 +6,13 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:54:05 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/04 00:21:44 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 01:21:38 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-void	init_mandel_plane(t_fractal *fractal)
+void	init_mandelelbrot(t_fractal *fractal)
 {
 	fractal->plane->x_pos = 1.8f;
 	fractal->plane->x_neg = -2.8f;
@@ -29,7 +29,7 @@ void	put_mandel_color(t_fractal *fractal, int diff, int x, int y)
 		color = 0x000000;
 	else if (diff <= 10)
 		color = get_color(255, 0, 0, (255 * diff) / fractal->iter);
-	else if (diff <= 14)
+	else if (diff <= 15)
 		color = get_color(255, (255 * diff) / fractal->iter, 0, 0);
 	else
 		color = get_color(255, 0, (255 * diff) / fractal->iter, 0);
@@ -40,19 +40,20 @@ void	show_mandelbrot(t_fractal *fractal, bool first)
 {
 	int		x;
 	int		y;
-	int		iter_left;
+	int		diff;
+	t_cnum	complex;
 
 	if (first)
-		init_mandel_plane(fractal);
+		init_mandelelbrot(fractal);
 	x = 0;
 	while (x < fractal->win->width)
 	{
 		y = 0;
 		while (y < fractal->win->height)
 		{
-			iter_left = is_mandel_stable(get_cnum(x, y, fractal),
-					fractal->iter);
-			put_mandel_color(fractal, iter_left, x, y);
+			complex = get_cnum(x, y, fractal);
+			diff = mandelbrot_iteration(complex, fractal->iter);
+			put_mandel_color(fractal, diff, x, y);
 			y++;
 		}
 		x++;

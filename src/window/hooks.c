@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/03 23:49:59 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 01:59:02 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,39 +22,39 @@ int	exit_fractal(t_fractal *fractal)
 	exit(EXIT_SUCCESS);
 }
 
-void   check_view_keys(t_fractal *fractal, int key)
+void	check_view_keys(t_fractal *fractal, int key)
 {
-	double diff;
-	
+	double	diff;
+
 	diff = 0.0f;
 	if (key == UP || key == DOWN)
-		diff = (fractal->plane->i_pos - fractal->plane->i_neg) * 0.1f;
+		diff = (fractal->plane->i_pos - fractal->plane->i_neg) * 0.3f;
 	else if (key == LEFT || key == RIGHT)
-		diff = (fractal->plane->x_pos - fractal->plane->x_neg) * 0.1f;
-	if (change_center(fractal, diff, key));
-		render_again(fractal);
+		diff = (fractal->plane->x_pos - fractal->plane->x_neg) * 0.3f;
+	if (change_center(fractal, diff, key))
+		render_again(fractal, false);
 }
 
-			
 int	key_hooks(int key_pressed, void *param)
 {
 	t_fractal	*fractal;
 
 	fractal = (t_fractal *)param;
-	ft_printf("key pressed: %d\n", key_pressed);
 	if (key_pressed == ESC || !fractal)
 		exit_fractal(fractal);
-	else if (key_pressed == JULIA_CONST)
+	else if (key_pressed == RESET)
+		render_again(fractal, true);
+	else if (key_pressed == JULIA_INC)
 	{
 		fractal->jconst.a -= 0.001f;
 		fractal->jconst.b += 0.008f;
-		render_again(fractal);
+		render_again(fractal, false);
 	}
-	else if (key_pressed == JULIA_BACK)
+	else if (key_pressed == JULIA_DEC)
 	{
 		fractal->jconst.a += 0.001f;
 		fractal->jconst.b -= 0.008f;
-		render_again(fractal);
+		render_again(fractal, false);
 	}
 	else
 		check_view_keys(fractal, key_pressed);

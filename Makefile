@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/03 21:26:23 by rphuyal           #+#    #+#              #
-#    Updated: 2023/07/02 22:34:40 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/07/04 01:55:46 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ SRC   = src/core/main.c \
 			src/window/zoom.c \
 			src/computes/helper.c \
 			src/computes/julia.c \
-			src/computes/tree.c \
 			src/computes/mandelbrot.c \
+			src/computes/burningship.c
 
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 

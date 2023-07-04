@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 13:15:20 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/04 00:18:22 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/04 01:29:29 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
-// libraries
+// library
 # include <math.h>
 
 // window dimensions
@@ -34,8 +34,6 @@ typedef struct s_cnum
 // complex plane
 typedef struct s_plane
 {
-	double	x0;
-	double	i0;
 	double	x_pos;
 	double	x_neg;
 	double	i_pos;
@@ -61,8 +59,7 @@ typedef struct s_window
 	t_img	img;
 }	t_window;
 
-// big daddy
-typedef struct s_fractal t_fractal;
+typedef struct s_fractal	t_fractal;
 
 typedef struct s_fractal
 {
@@ -75,35 +72,39 @@ typedef struct s_fractal
 }	t_fractal;
 
 
-// fractal's validation
-void		*ft_valid_args(char *frac);
-bool	initialization(t_fractal *fractal);
+/* validation */
+void		*valid_fractal(char *frac);
+bool		initialization(t_fractal *fractal);
 t_window	*get_window(char *name);
 t_img		get_image(t_window *win, int width, int height);
-int		ft_error(char *heading, char *message);
-int		exit_fractal(t_fractal *fractal);
+int			ft_error(char *heading, char *message);
+int			exit_fractal(t_fractal *fractal);
 
-// window functions
-void    zoom_in(t_fractal *fractal, double x, double y);
-void    zoom_out(t_fractal *fractal, double x, double y);
-int    change_center(t_fractal *fractal, double val, int key);
-void	render_again(t_fractal *fractal);
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-void	put_background(t_fractal *fractal);
-int		get_b(int trgb);
-int		get_color(int op, int r, int g, int b);
-int		key_hooks(int key_pressed, void *param);
-int		mouse_hooks(int button, int mouse_x, int mouse_y, void *param);
-int		exit_fractal(t_fractal *fractal);
+/* window */
+void		zoom_in(t_fractal *fractal, double x, double y);
+void		zoom_out(t_fractal *fractal, double x, double y);
+int			change_center(t_fractal *fractal, double val, int key);
+void		render_again(t_fractal *fractal, bool first);
+void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int			get_color(int op, int r, int g, int b);
 
-// computation functions
+/* hooks */
+int			key_hooks(int key_pressed, void *param);
+int			mouse_hooks(int button, int mouse_x, int mouse_y, void *param);
+int			exit_fractal(t_fractal *fractal);
+
+/* complex */
 t_cnum		get_cnum(int x, int y, t_fractal *fractal);
+
+/* helper */
+double		map_range(int num, t_fractal *fractal, char dimension);
+
+/* fractals */
 void		show_tree(t_fractal *fractal, bool first);
 void		show_julia(t_fractal *fractal, bool first);
 void		show_mandelbrot(t_fractal *fractal, bool first);
-int 		is_julia_stable(t_cnum inum, t_cnum c, int iter);
-int			is_mandel_stable(t_cnum inum, int iter);
-int			is_bs_stable(t_cnum inum, t_cnum const_c, int iter);
-double		map_range(int num, t_fractal *fractal, char dimension);
+int			julia_iteration(t_cnum inum, t_cnum const_c, int iter);
+int			mandelbrot_iteration(t_cnum inum, int iter);
+int			burningship_iteration(t_cnum inum, t_cnum const_c, int iter);
 
 #endif

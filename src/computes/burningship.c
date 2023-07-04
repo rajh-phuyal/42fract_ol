@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tree.c                                             :+:      :+:    :+:   */
+/*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/04 20:48:14 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/04 00:24:14 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/06/28 01:20:12 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/07/04 01:56:40 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-void	init_tree_plane(t_fractal *fractal)
+void	init_burningship(t_fractal *fractal)
 {
 	fractal->plane->x_pos = 2.0f;
 	fractal->plane->x_neg = -2.0f;
@@ -21,14 +21,14 @@ void	init_tree_plane(t_fractal *fractal)
 	fractal->iter = 100;
 }
 
-void	put_tree_color(t_fractal *fractal, int diff, int x, int y)
+void	put_burning_color(t_fractal *fractal, int diff, int x, int y)
 {
 	int	color;
 
 	if (diff == 0)
 		color = 0x000000;
-	else 
-		color = get_color(255, 0, (255 * diff) / fractal->iter, 0);
+	else
+		color = get_color(255, 100, (255 * diff) / fractal->iter, 100);
 	my_mlx_pixel_put(&fractal->win->img, x, y, color);
 }
 
@@ -36,19 +36,20 @@ void	show_tree(t_fractal *fractal, bool first)
 {
 	int		x;
 	int		y;
-	int		iter_left;
+	int		diff;
+	t_cnum	complex;
 
 	if (first)
-		init_tree_plane(fractal);
+		init_burningship(fractal);
 	x = 0;
 	while (x < fractal->win->width)
 	{
 		y = 0;
 		while (y < fractal->win->height)
 		{
-			iter_left = is_bs_stable(get_cnum(x, y, fractal),
-					get_cnum(x, y, fractal), fractal->iter);
-			put_tree_color(fractal, iter_left, x, y);
+			complex = get_cnum(x, y, fractal);
+			diff = burningship_iteration(complex, complex, fractal->iter);
+			put_burning_color(fractal, diff, x, y);
 			y++;
 		}
 		x++;
