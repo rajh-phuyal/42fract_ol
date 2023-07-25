@@ -13,7 +13,7 @@ Run `make`. An executable will compile.
 - Burning Ship
 
 ## Controls
-- Scroll to zoom in and out
+- `scroll` to zoom in and out
 - `arrow keys` to move view
 - `space` to reset view color
 - `esc` to exit
