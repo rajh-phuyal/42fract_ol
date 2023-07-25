@@ -19,4 +19,4 @@ Run `make`. An executable will compile.
 - `esc` to exit
 
 ### Note:
-Mlx for mac is not great!
+MLX for mac is not great!
